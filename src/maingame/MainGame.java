@@ -17,7 +17,7 @@ public class MainGame {
 
     void start() {
         frame1 = new MainFrame();
-
+        //toller frame!
     }
 
 
