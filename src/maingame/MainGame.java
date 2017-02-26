@@ -7,15 +7,22 @@ import java.awt.*;
  * Created by Daniel on 26.02.2017.
  */
 public class MainGame {
+        MainFrame frame1;
+        JFrame frame;
 
+        public static void main(String[] args) {
+        new MainGame().start();
 
-    public static void main(String[] args) {
+    }
 
+    void start() {
+        frame1 = new MainFrame();
 
     }
 
 
 }
+
 
 
 
