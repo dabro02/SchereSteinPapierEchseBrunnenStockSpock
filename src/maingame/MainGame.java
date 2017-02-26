@@ -16,8 +16,13 @@ public class MainGame {
     }
 
     void start() {
-        frame1 = new MainFrame();
-        //toller frame!
+        frame = new JFrame();
+        frame1 = new MainFrame(this);
+        frame.add(frame1);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame1.start();
+
     }
 
 
