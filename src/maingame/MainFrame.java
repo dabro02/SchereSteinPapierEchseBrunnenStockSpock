@@ -28,11 +28,13 @@ public class MainFrame extends JPanel {
     }
 
     @Override
-    protected void paintComponent(Graphics g){
-        start.render((Graphics2D) g);
-        einstellungen.render((Graphics2D) g);
-        info.render((Graphics2D) g);
-        beenden.render((Graphics2D) g);
+    protected void paintComponent(Graphics g2){
+        Graphics2D g = (Graphics2D) g2;
+        super.paintComponent(g);
+        start.render(g);
+        einstellungen.render(g);
+        info.render(g);
+        beenden.render(g);
 
 
 
@@ -45,13 +47,13 @@ public class MainFrame extends JPanel {
     boolean ö = true;
 
     public void start() {
-
         while(true) {
-            Graphics g = getGraphics();
-            start.buttonPointed((Graphics2D) g,225,100,150,50);
-            einstellungen.buttonPointed((Graphics2D) g, 225,185,150,50);
-            info.buttonPointed((Graphics2D) g,225, 185+85 , 150, 50);
-            beenden.buttonPointed((Graphics2D) g,225, 185+85+85 , 150, 50);
+            int y = game.frame.getMousePosition().y;
+            int x = game.frame.getMousePosition().x;
+            start.buttonPointed(x, y);
+            einstellungen.buttonPointed(x, y);
+            info.buttonPointed(x, y);
+            beenden.buttonPointed(x, y);
             repaint();
 
         }
