@@ -2,6 +2,8 @@ package maingame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * Created by Daniel on 26.02.2017.
@@ -18,6 +20,50 @@ public class MainFrame extends JPanel {
         game.frame.setBounds(500, 200, 600, 600);
         game.frame.setResizable(false);
         getGraphics();
+        game.frame.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(start.buttonPointed(e.getX(), e.getY()))
+                 {
+                     System.out.println("hi start");
+
+                 }
+                if(einstellungen.buttonPointed(e.getX(), e.getY()))
+                 {
+                     System.out.println("hi einstellungen");
+                 }
+                if(info.buttonPointed(e.getX(), e.getY()))
+                 {
+                     Info info = new Info();
+                 }
+                if(beenden.buttonPointed(e.getX(), e.getY()))
+                 {
+
+                     System.exit(0);
+                 }
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
 
         //game.frame.
         this.start =            new Button( 225, 100, 150, 50, Color.BLUE, Color.CYAN, "              Start");
@@ -42,6 +88,7 @@ public class MainFrame extends JPanel {
 
 
     public void start() {
+
         while(true) {
             int y = 0;
             int x = 0;
