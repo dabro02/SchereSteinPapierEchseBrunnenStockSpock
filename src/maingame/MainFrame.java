@@ -2,7 +2,6 @@ package maingame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 
 /**
  * Created by Daniel on 26.02.2017.
@@ -41,15 +40,17 @@ public class MainFrame extends JPanel {
 
     }
 
-    boolean j = true;
-    boolean k = true;
-    boolean l = true;
-    boolean ö = true;
 
     public void start() {
         while(true) {
-            int y = game.frame.getMousePosition().y;
-            int x = game.frame.getMousePosition().x;
+            int y = 0;
+            int x = 0;
+            try {
+                y = game.frame.getMousePosition().y;
+                x = game.frame.getMousePosition().x;
+            }
+            catch(Exception e){
+            }
             start.buttonPointed(x, y);
             einstellungen.buttonPointed(x, y);
             info.buttonPointed(x, y);

@@ -52,7 +52,7 @@ public class Button {
   public boolean buttonPointed(int mouseX, int mouseY){
       //System.out.println(x +"  "+ y+"  "+w+"  "+h);
 
-      if(mouseX >= x && mouseX <= x+w && mouseY >= y && mouseY <= y+ h) {
+      if(mouseX >= x && mouseX <= x+w && mouseY >= y+25 && mouseY <= y+25+ h) {
           point = true;
           return point;
       }
