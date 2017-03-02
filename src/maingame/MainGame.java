@@ -16,7 +16,7 @@ public class MainGame {
     }
 
     void start() {
-        frame = new JFrame();
+        frame = new JFrame("Main Menu - Schere-Stein-Papier-Echse-Brunnen-Stock-Spock");
         frame1 = new MainFrame(this);
         frame.add(frame1);
         frame.setVisible(true);

@@ -12,7 +12,7 @@ import java.util.Random;
  */
 
 
-public class Graphics {
+/*public class Graphics {
     public static void main(String[] args) {
         BufferedImage img = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = img.createGraphics();
@@ -27,4 +27,4 @@ public class Graphics {
             e.printStackTrace();
         }
     }
-}
+}*/
