@@ -56,7 +56,6 @@ public class Button {
           point = true;
           return point;
       }
-
       //mouseX >= x && mouseX <= x+w && mouseY >= y && mouseY <= y + h
       point = false;
       return point;
