@@ -105,7 +105,7 @@ public class MainFrame extends JPanel {
             }
             catch(Exception e){
             }
-            if(this.isVisible()) {
+            if(isVisible()) {
                 start.buttonPointed(x, y);
                 einstellungen.buttonPointed(x, y);
                 info.buttonPointed(x, y);
@@ -117,7 +117,7 @@ public class MainFrame extends JPanel {
 
             }
             catch(Exception e){}
-            if(this.isVisible())
+            if(isVisible())
                  repaint();
             if(game.info.isVisible())
                 game.info.repaint();

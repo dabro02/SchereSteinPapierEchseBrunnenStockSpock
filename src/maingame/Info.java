@@ -38,6 +38,7 @@ public class Info extends JPanel {
     protected void paintComponent(Graphics g2) {
         Graphics2D g = (Graphics2D) g2;
         super.paintComponent(g);
+        renderInfo(g);
 
     }
 

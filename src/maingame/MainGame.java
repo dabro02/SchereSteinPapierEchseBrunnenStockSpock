@@ -34,6 +34,7 @@ public class MainGame {
         frame1.setVisible(false);
         info.setVisible(true);
         info.repaint();
+        frame.remove(0);
     }
 
     public void closeInfo(){
