@@ -35,8 +35,9 @@ public class MainFrame extends JPanel {
                  }
                 if(info.buttonPointed(e.getX(), e.getY()))
                  {
-                     Info info = new Info();
-                     info1 = info;
+                     info1  = new Info();
+
+
 
                  }
                 if(beenden.buttonPointed(e.getX(), e.getY()))
@@ -82,10 +83,6 @@ public class MainFrame extends JPanel {
         einstellungen.render(g);
         info.render(g);
         beenden.render(g);
-        try{
-            info1.renderInfo(g);
-        }
-        catch(Exception e){}
 
 
 
@@ -109,6 +106,10 @@ public class MainFrame extends JPanel {
             einstellungen.buttonPointed(x, y);
             info.buttonPointed(x, y);
             beenden.buttonPointed(x, y);
+            try{
+
+            }
+            catch(Exception e){}
             repaint();
 
         }

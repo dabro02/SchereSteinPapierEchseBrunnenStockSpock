@@ -29,5 +29,22 @@ public class Info extends JPanel {
         g.drawString("daniel-brormann@hotmail.com", 185,200);
         g.setColor(Color.BLACK);
         g.drawString(" .", 420 , 200);
+        Button backToMainMenu = new Button(225, 400, 150, 50, Color.BLUE, Color.CYAN,"         Main Menu");
+        backToMainMenu.render(g);
+    }
+
+
+    @Override
+    protected void paintComponent(Graphics g2) {
+        Graphics2D g = (Graphics2D) g2;
+        super.paintComponent(g);
+
+    }
+
+    public void updateInfo()
+    {
+        while(){
+
+        }
     }
 }
