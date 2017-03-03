@@ -7,7 +7,7 @@ import java.awt.*;
  * Created by Daniel on 02.03.2017.
  */
 public class Info extends JPanel {
-
+    Button backToMainMenu;
 
 
     Info()
@@ -29,7 +29,7 @@ public class Info extends JPanel {
         g.drawString("daniel-brormann@hotmail.com", 185,200);
         g.setColor(Color.BLACK);
         g.drawString(" .", 420 , 200);
-        Button backToMainMenu = new Button(225, 400, 150, 50, Color.BLUE, Color.CYAN,"         Main Menu");
+        backToMainMenu = new Button(225, 400, 150, 50, Color.BLUE, Color.CYAN,"         Main Menu");
         backToMainMenu.render(g);
     }
 
@@ -41,10 +41,4 @@ public class Info extends JPanel {
 
     }
 
-    public void updateInfo()
-    {
-        while(){
-
-        }
-    }
 }

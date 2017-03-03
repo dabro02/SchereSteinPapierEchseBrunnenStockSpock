@@ -15,6 +15,7 @@ public class MainFrame extends JPanel {
     Button info;
     Info info1;
     Button beenden;
+    boolean running;
 
     MainFrame(MainGame game){
         this.game = game;
@@ -35,9 +36,7 @@ public class MainFrame extends JPanel {
                  }
                 if(info.buttonPointed(e.getX(), e.getY()))
                  {
-                     info1  = new Info();
-
-
+                     game.startInfo();
 
                  }
                 if(beenden.buttonPointed(e.getX(), e.getY()))
@@ -68,7 +67,6 @@ public class MainFrame extends JPanel {
 
             }
         });
-
         this.start =            new Button( 225, 100, 150, 50, Color.BLUE, Color.CYAN, "              Start");
         this.einstellungen =    new Button( 225, 185, 150, 50, Color.BLUE, Color.CYAN, "         Einstellung");
         this.info =             new Button( 225, 270, 150, 50, Color.BLUE, Color.CYAN, "      Informationen");
@@ -79,10 +77,14 @@ public class MainFrame extends JPanel {
     protected void paintComponent(Graphics g2){
         Graphics2D g = (Graphics2D) g2;
         super.paintComponent(g);
-        start.render(g);
-        einstellungen.render(g);
-        info.render(g);
-        beenden.render(g);
+        if(this.isVisible()) {
+            start.render(g);
+            einstellungen.render(g);
+            info.render(g);
+            beenden.render(g);
+        }
+        if(game.info.isVisible())
+            game.info.backToMainMenu.render(g);
 
 
 
@@ -92,8 +94,9 @@ public class MainFrame extends JPanel {
 
 
     public void start() {
+        running  = true;
 
-        while(true) {
+        while(running) {
             int y = 0;
             int x = 0;
             try {
@@ -102,15 +105,22 @@ public class MainFrame extends JPanel {
             }
             catch(Exception e){
             }
-            start.buttonPointed(x, y);
-            einstellungen.buttonPointed(x, y);
-            info.buttonPointed(x, y);
-            beenden.buttonPointed(x, y);
+            if(this.isVisible()) {
+                start.buttonPointed(x, y);
+                einstellungen.buttonPointed(x, y);
+                info.buttonPointed(x, y);
+                beenden.buttonPointed(x, y);
+            }
+            if(game.info.isVisible())
+                game.info.backToMainMenu.buttonPointed(x,y);
             try{
 
             }
             catch(Exception e){}
-            repaint();
+            if(this.isVisible())
+                 repaint();
+            if(game.info.isVisible())
+                game.info.repaint();
 
         }
     }

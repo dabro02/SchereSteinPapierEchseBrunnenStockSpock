@@ -8,6 +8,7 @@ import java.awt.*;
  */
 public class MainGame {
         MainFrame frame1;
+        Info info;
         JFrame frame;
 
         public static void main(String[] args) {
@@ -18,11 +19,34 @@ public class MainGame {
     void start() {
         frame = new JFrame("Main Menu - Schere-Stein-Papier-Echse-Brunnen-Stock-Spock");
         frame1 = new MainFrame(this);
+        info = new Info();
+        frame.add(info);
         frame.add(frame1);
+        info.setVisible(false);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.start();
 
+    }
+
+    public void startInfo(){
+        info.renderInfo((Graphics2D)frame1.getGraphics());
+        frame1.setVisible(false);
+        info.setVisible(true);
+        info.repaint();
+    }
+
+    public void closeInfo(){
+        info.setVisible(false);
+        frame1.setVisible(true);
+
+    }
+
+    public Info getInfo(){
+        return this.info;
+    }
+    public void setInfo(Info info){
+        this.info = info;
     }
 
 
