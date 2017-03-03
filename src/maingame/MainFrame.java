@@ -25,6 +25,7 @@ public class MainFrame extends JPanel {
         game.frame.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if(game.activescreen == 0){
                 if(start.buttonPointed(e.getX(), e.getY()))
                  {
                      System.out.println("hi start");
@@ -43,7 +44,7 @@ public class MainFrame extends JPanel {
                  {
 
                      System.exit(0);
-                 }
+                 }}
 
             }
 
