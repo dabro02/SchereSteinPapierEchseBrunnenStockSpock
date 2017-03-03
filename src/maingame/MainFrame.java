@@ -13,6 +13,7 @@ public class MainFrame extends JPanel {
     Button start;
     Button einstellungen;
     Button info;
+    Info info1;
     Button beenden;
 
     MainFrame(MainGame game){
@@ -35,6 +36,8 @@ public class MainFrame extends JPanel {
                 if(info.buttonPointed(e.getX(), e.getY()))
                  {
                      Info info = new Info();
+                     info1 = info;
+
                  }
                 if(beenden.buttonPointed(e.getX(), e.getY()))
                  {
@@ -65,7 +68,6 @@ public class MainFrame extends JPanel {
             }
         });
 
-        //game.frame.
         this.start =            new Button( 225, 100, 150, 50, Color.BLUE, Color.CYAN, "              Start");
         this.einstellungen =    new Button( 225, 185, 150, 50, Color.BLUE, Color.CYAN, "         Einstellung");
         this.info =             new Button( 225, 270, 150, 50, Color.BLUE, Color.CYAN, "      Informationen");
@@ -80,6 +82,11 @@ public class MainFrame extends JPanel {
         einstellungen.render(g);
         info.render(g);
         beenden.render(g);
+        try{
+            info1.renderInfo(g);
+        }
+        catch(Exception e){}
+
 
 
 
