@@ -77,13 +77,13 @@ public class MainFrame extends JPanel {
     protected void paintComponent(Graphics g2){
         Graphics2D g = (Graphics2D) g2;
         super.paintComponent(g);
-        if(this.isVisible()) {
+        if(game.activescreen == 0) {
             start.render(g);
             einstellungen.render(g);
             info.render(g);
             beenden.render(g);
         }
-        if(game.info.isVisible())
+        if(game.activescreen == 1)
             game.info.backToMainMenu.render(g);
 
 
@@ -104,21 +104,21 @@ public class MainFrame extends JPanel {
             }
             catch(Exception e){
             }
-            if(isVisible()) {
+            if(game.activescreen == 0) {
                 start.buttonPointed(x, y);
                 einstellungen.buttonPointed(x, y);
                 info.buttonPointed(x, y);
                 beenden.buttonPointed(x, y);
             }
-            if(game.info.isVisible())
+            if(game.activescreen == 1)
                 game.info.backToMainMenu.buttonPointed(x,y);
             try{
 
             }
             catch(Exception e){}
-            if(isVisible())
+            if(game.activescreen == 0)
                  repaint();
-            if(game.info.isVisible())
+            if(game.activescreen == 1)
                 game.info.repaint();
 
         }

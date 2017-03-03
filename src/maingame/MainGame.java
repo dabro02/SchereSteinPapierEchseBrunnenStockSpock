@@ -10,6 +10,7 @@ public class MainGame {
         MainFrame frame1;
         Info info;
         JFrame frame;
+        int activescreen = 0;
 
         public static void main(String[] args) {
         new MainGame().start();
@@ -31,6 +32,7 @@ public class MainGame {
 
     public void startInfo(){
         info.renderInfo((Graphics2D)frame1.getGraphics());
+        activescreen = 1;
         frame1.setVisible(false);
         info.setVisible(true);
         info.repaint();
@@ -38,8 +40,11 @@ public class MainGame {
     }
 
     public void closeInfo(){
+        activescreen = 0;
         info.setVisible(false);
+        frame.add(frame1);
         frame1.setVisible(true);
+
 
     }
 
