@@ -13,7 +13,6 @@ public class MainFrame extends JPanel {
     Button start;
     Button einstellungen;
     Button info;
-    Info info1;
     Button beenden;
     boolean running;
 
@@ -45,6 +44,11 @@ public class MainFrame extends JPanel {
 
                      System.exit(0);
                  }}
+                 if(game.activescreen == 1){
+                    if(game.info1.backToMainMenu.buttonPointed(e.getX(), e.getY())){
+                        game.closeInfo();
+                    }
+                 }
 
             }
 
@@ -85,7 +89,7 @@ public class MainFrame extends JPanel {
             beenden.render(g);
         }
         if(game.activescreen == 1)
-            game.info.backToMainMenu.render(g);
+            game.info1.backToMainMenu.render(g);
 
 
 
@@ -112,7 +116,7 @@ public class MainFrame extends JPanel {
                 beenden.buttonPointed(x, y);
             }
             if(game.activescreen == 1)
-                game.info.backToMainMenu.buttonPointed(x,y);
+                game.info1.backToMainMenu.buttonPointed(x,y);
             try{
 
             }
@@ -120,7 +124,7 @@ public class MainFrame extends JPanel {
             if(game.activescreen == 0)
                  repaint();
             if(game.activescreen == 1)
-                game.info.repaint();
+                game.info1.repaint();
 
         }
     }
