@@ -116,7 +116,7 @@ public class MainFrame extends JPanel {
                 beenden.buttonPointed(x, y);
             }
             if(game.activescreen == 1)
-                game.info1.backToMainMenu.buttonPointed(x,y);
+                game.info1.backToMainMenu.buttonPointed(x, y);
             try{
 
             }
