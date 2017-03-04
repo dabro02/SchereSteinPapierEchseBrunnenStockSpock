@@ -25,30 +25,28 @@ public class MainFrame extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(game.activescreen == 0){
-                if(start.buttonPointed(e.getX(), e.getY()))
-                 {
-                     System.out.println("hi start");
+                    if(start.buttonPointed(e.getX(), e.getY())) {
+                        System.out.println("hi start");
+                    }
 
-                 }
-                if(einstellungen.buttonPointed(e.getX(), e.getY()))
-                 {
-                     System.out.println("hi einstellungen");
-                 }
-                if(info.buttonPointed(e.getX(), e.getY()))
-                 {
-                     game.startInfo();
+                    else if(einstellungen.buttonPointed(e.getX(), e.getY())) {
+                        System.out.println("hi einstellungen");
+                    }
 
-                 }
-                if(beenden.buttonPointed(e.getX(), e.getY()))
-                 {
+                    else if(info.buttonPointed(e.getX(), e.getY())) {
+                        game.startInfo();
+                    }
 
-                     System.exit(0);
-                 }}
-                 if(game.activescreen == 1){
+                    else if(beenden.buttonPointed(e.getX(), e.getY())) {
+                        System.exit(0);
+                    }
+
+                } else if(game.activescreen == 1){
                     if(game.info1.backToMainMenu.buttonPointed(e.getX(), e.getY())){
                         game.closeInfo();
                     }
-                 }
+
+                }
 
             }
 
@@ -107,25 +105,20 @@ public class MainFrame extends JPanel {
                 y = game.frame.getMousePosition().y;
                 x = game.frame.getMousePosition().x;
             }
-            catch(Exception e){
-            }
+            catch(Exception e){}
             if(game.activescreen == 0) {
                 start.buttonPointed(x, y);
                 einstellungen.buttonPointed(x, y);
                 info.buttonPointed(x, y);
                 beenden.buttonPointed(x, y);
-            }
-            if(game.activescreen == 1)
+            } else if(game.activescreen == 1) {
                 game.info1.backToMainMenu.buttonPointed(x, y);
-            try{
-
             }
-            catch(Exception e){}
+
+
+
             if(game.activescreen == 0)
                  repaint();
-            if(game.activescreen == 1)
-                game.info1.repaint();
-
         }
     }
 

@@ -10,13 +10,11 @@ public class Info extends JPanel {
     Button backToMainMenu;
 
 
-    Info()
-    {
-
+    Info() {
+        backToMainMenu = new Button(225, 400, 150, 50, Color.BLUE, Color.CYAN,"         Main Menu");
     }
 
-    public void renderInfo(Graphics2D g)
-    {
+    public void renderInfo(Graphics2D g) {
         g.clearRect(0,0,600,600);
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.BOLD,16));
@@ -29,17 +27,10 @@ public class Info extends JPanel {
         g.drawString("daniel-brormann@hotmail.com", 185,200);
         g.setColor(Color.BLACK);
         g.drawString(" .", 420 , 200);
-        backToMainMenu = new Button(225, 400, 150, 50, Color.BLUE, Color.CYAN,"         Main Menu");
         backToMainMenu.render(g);
     }
 
 
-    @Override
-    protected void paintComponent(Graphics g2) {
-        Graphics2D g = (Graphics2D) g2;
-        super.paintComponent(g);
-        renderInfo(g);
 
-    }
 
 }

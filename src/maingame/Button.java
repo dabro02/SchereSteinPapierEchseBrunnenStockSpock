@@ -1,41 +1,38 @@
 package maingame;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 /**
  * Created by Daniel on 26.02.2017.
  */
 public class Button {
     int x, y, w, h;
-    Color c, k;
+    Color surroundingColor, backgroundColor;
     String name;
     boolean point = false;
+    Font font = new Font("Arial", Font.BOLD, 16);
 
 
-    public Button(int x, int y, int w, int h, Color c, Color k, String name) {
+    public Button(int x, int y, int w, int h, Color surroundingColor, Color backgroundColor, String name) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
-        this.c = c;
-        this.k = k;
+        this.surroundingColor = surroundingColor;
+        this.backgroundColor = backgroundColor;
         this.name = name;
-
-
     }
 
 
     void render(Graphics2D g) {
-        g.setColor(k);
+        g.setColor(backgroundColor);
         g.fillRect(x, y, w, h);
 
-        g.setColor(c);
+        g.setColor(surroundingColor);
         g.drawRect(x, y, w, h);
 
         g.setColor(Color.BLACK);
-        g.setFont(new Font("Arial", Font.BOLD, 16));
+        g.setFont(font);
         g.drawString(name, x, y + 30);
 
         if (point) {
