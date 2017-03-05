@@ -18,6 +18,11 @@ public class HauptSpiel {
     //rendermethode vom maingame
     public void renderHauptSpiel(Graphics2D g)
     {
+        g.setFont(new Font("Arial", Font.BOLD , 24));
+        g.drawString("Hallo Benutzer und Herzlich Willkommen zum Schere-Stein-Papier-Echse-Brunnen-Stock-Spock-Spiel.", 390, 100);
+        g.setFont(new Font("Arial", Font.BOLD , 20));
+        g.drawString("Ihnen werden jetzt die Regeln des Spiel erklärt, wenn sie diese überspringen wollen klicken sie auf den Bildschirm", 420, 200);
+
 
     }
 }
