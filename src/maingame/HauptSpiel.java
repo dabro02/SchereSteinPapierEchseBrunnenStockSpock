@@ -80,6 +80,7 @@ public class HauptSpiel {
             if(skip ==1){
                 g.setFont(new Font("Arial", Font.BOLD, 20));
                 g.drawString("Wählen sie einen der Folgenden Begriffe.", 700,200);
+                //bild funktioniert noch nicht ganz
                 BufferedImage schere = null;
                 try{
                     schere = ImageIO.read(new File("C:\\TestJavaGraphics\\Schere.png"));
@@ -87,9 +88,10 @@ public class HauptSpiel {
                     scherebutton = new PictureButtons(300,300,300,300);
                     if(scherebutton.buttonPointedpicture(x,y))
                     {
+                        System.out.println("hallo");
                         g.setColor(Color.DARK_GRAY);
-                        g.drawRect(x + 1, y + 1, 300, 300);
-                        g.drawRect(x + 2, y + 2, 300, 300);
+                        g.drawRect(300 + 1, 300 + 1, 300, 300);
+                        g.drawRect(300 + 2, 300 + 2, 300, 300);
                     }
                 }
                 catch(Exception e)
