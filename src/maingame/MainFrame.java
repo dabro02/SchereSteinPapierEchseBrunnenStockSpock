@@ -14,7 +14,6 @@ public class MainFrame extends JPanel {
     Button einstellungen;
     Button info;
     Button beenden;
-    boolean running;
 
     MainFrame(MainGame game){
         this.game = game;
@@ -35,6 +34,7 @@ public class MainFrame extends JPanel {
 
                     else if(info.buttonPointed(e.getX(), e.getY())) {
                         game.startInfo();
+
                     }
 
                     else if(beenden.buttonPointed(e.getX(), e.getY())) {
@@ -70,6 +70,7 @@ public class MainFrame extends JPanel {
 
             }
         });
+        //erstellung der Menu-Buttons
         this.start =            new Button( 225, 100, 150, 50, Color.BLUE, Color.CYAN, "              Start");
         this.einstellungen =    new Button( 225, 185, 150, 50, Color.BLUE, Color.CYAN, "         Einstellung");
         this.info =             new Button( 225, 270, 150, 50, Color.BLUE, Color.CYAN, "      Informationen");
@@ -86,19 +87,17 @@ public class MainFrame extends JPanel {
             info.render(g);
             beenden.render(g);
         }
-        if(game.activescreen == 1)
-            game.info1.backToMainMenu.render(g);
-
-
+       else if(game.activescreen == 1){
+            game.info1.renderInfo(g);
+            }
 
 
     }
 
-
+    //update-loop
     public void start() {
-        running  = true;
 
-        while(running) {
+        while(true) {
             int y = 0;
             int x = 0;
             try {
@@ -106,19 +105,30 @@ public class MainFrame extends JPanel {
                 x = game.frame.getMousePosition().x;
             }
             catch(Exception e){}
+            //if menu
             if(game.activescreen == 0) {
                 start.buttonPointed(x, y);
                 einstellungen.buttonPointed(x, y);
                 info.buttonPointed(x, y);
                 beenden.buttonPointed(x, y);
-            } else if(game.activescreen == 1) {
+                repaint();
+            }
+            //if Informationen
+            else if(game.activescreen == 1) {
                 game.info1.backToMainMenu.buttonPointed(x, y);
+                repaint();
+            }
+            //if Einstellungen
+            else if(game.activescreen == 2){
+
+                repaint();
+            }
+            //if Start
+            else if(game.activescreen == 3){
+
+                repaint();
             }
 
-
-
-            if(game.activescreen == 0)
-                 repaint();
         }
     }
 
