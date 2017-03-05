@@ -30,13 +30,15 @@ public class HauptSpiel {
                 {
                     if(true)
                         if(skip == 0)
-                        {System.out.println("halo");
-                            skip++;}
+                        {skip++;}
                     else if (skip ==1)
-                        {if(game.maingame.scherebutton.buttonPointedpicture(e.getX(), e.getY()));
-                    {
-                        System.out.println("schere");
-                    }}
+                        {
+                            if(game.maingame.scherebutton.buttonPointedpicture(e.getX(), e.getY()));
+                            {
+                                System.out.println("schere");
+                            }
+
+                        }
 
                 }
             }
@@ -76,20 +78,14 @@ public class HauptSpiel {
             if(skip ==1){
                 g.setFont(new Font("Arial", Font.BOLD, 20));
                 g.drawString("Wählen sie einen der Folgenden Begriffe.", 700,200);
-                //bild funktioniert noch nicht ganz
-                BufferedImage schere = null;
-                try{
-                    schere = ImageIO.read(new File("C:\\TestJavaGraphics\\Schere.png"));
-                    g.drawImage(schere, 300,300, null );
-                    scherebutton = new PictureButtons(300,300,300,300);
+                //bild funktioniert noch nicht ganz unbedingt gucken woran das liegt, dass er egal wo man hinclickt "schere" ausgibt!!!
+                //"C:\\TestJavaGraphics\\Schere.png"
+                    int xschere = 300;
+                    int yschere = 300;
+                    int wschere = 640;
+                    int hschere = 640;
+                    scherebutton = new PictureButtons(xschere,yschere,wschere,hschere);
                     scherebutton.renderpicturebutton(g);
-
-                }
-                catch(Exception e)
-                {
-                    return;
-                }
-
             }
 
 
