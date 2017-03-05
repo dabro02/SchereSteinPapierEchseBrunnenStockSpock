@@ -50,9 +50,8 @@ public class MainFrame extends JPanel {
                     }
 
                 }
-                else if(true){
-                    //skip regeln
-                    System.out.println("regeln werden übersprungen");
+                else if(game.activescreen == 2){
+                    //continue regeln
                 }
 
             }
@@ -105,6 +104,8 @@ public class MainFrame extends JPanel {
 
 
     }
+
+
 
     //update-loop
     public void start() {
