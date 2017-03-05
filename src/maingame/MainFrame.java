@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import static javax.swing.text.StyleConstants.Underline;
+
 /**
  * Created by Daniel on 26.02.2017.
  */
@@ -23,9 +25,10 @@ public class MainFrame extends JPanel {
         game.frame.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                //funktionen alle MainMenu Buttons
                 if(game.activescreen == 0){
                     if(start.buttonPointed(e.getX(), e.getY())) {
-                        System.out.println("hi start");
+                        game.startHauptSpiel();
                     }
 
                     else if(einstellungen.buttonPointed(e.getX(), e.getY())) {
@@ -41,7 +44,9 @@ public class MainFrame extends JPanel {
                         System.exit(0);
                     }
 
-                } else if(game.activescreen == 1){
+                }
+                //funktionen backToMainMenu butten in der Info-class
+                else if(game.activescreen == 1){
                     if(game.info1.backToMainMenu.buttonPointed(e.getX(), e.getY())){
                         game.closeInfo();
                     }
@@ -86,6 +91,8 @@ public class MainFrame extends JPanel {
             einstellungen.render(g);
             info.render(g);
             beenden.render(g);
+            g.setFont(new Font("Arial", Font.BOLD , 24));
+            g.drawString("Main Menu", 235, 50);
         }
        else if(game.activescreen == 1){
             game.info1.renderInfo(g);

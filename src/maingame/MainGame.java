@@ -10,7 +10,9 @@ public class MainGame {
         MainFrame frame1;
         Info info1;
         JFrame frame;
+        HauptSpiel maingame;
         public int activescreen = 0;
+
 
         public static void main(String[] args) {
         new MainGame().start();
@@ -18,37 +20,44 @@ public class MainGame {
     }
 
     void start() {
-        frame = new JFrame("Main Menu - Schere-Stein-Papier-Echse-Brunnen-Stock-Spock");
+        frame = new JFrame("Schere-Stein-Papier-Echse-Brunnen-Stock-Spock");
         frame1 = new MainFrame(this);
         info1 = new Info();
         frame.add(frame1);
-
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.start();
 
     }
-    /*
-    Richtig hässlich und unsauber alles, aber noch verkraftbar und es läuft ;)
-     */
 
-    public void startInfo(){ //cleaner opening
+    //starten eines Info-Objekts
+    public void startInfo(){
         activescreen = 1;
         info1 = new Info(); //zum zurücksetzen, beugt Fehlern vor
-        info1.renderInfo((Graphics2D)frame1.getGraphics()); //wieso nur einmal?
-        //frame.remove(frame1);
-        //frame.add(info1);
-
+        info1.renderInfo((Graphics2D)frame1.getGraphics());
     }
 
-    public void closeInfo(){ //cleaner closing
+    //schließen eines Info-Objekts
+    public void closeInfo(){
         activescreen = 0;
         frame.repaint();
-        //frame.add(frame1);
-        //frame.remove(info1);
+    }
 
+    //starten des HauptSpiels
+    public void startHauptSpiel(){
+        activescreen = 2;
+        maingame = new HauptSpiel(this);
+        maingame.renderHauptSpiel((Graphics2D) frame1.getGraphics());
 
     }
+
+    //schließen des HauptSpiels
+    public void closeHauptSpiel(){
+        activescreen = 0;
+        frame.repaint();
+
+    }
+
 
 
 }
