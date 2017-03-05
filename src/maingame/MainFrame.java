@@ -5,8 +5,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import static javax.swing.text.StyleConstants.Underline;
-
 /**
  * Created by Daniel on 26.02.2017.
  */

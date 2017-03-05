@@ -22,7 +22,7 @@ public class HauptSpiel {
         g.drawString("Hallo Benutzer und Herzlich Willkommen zum Schere-Stein-Papier-Echse-Brunnen-Stock-Spock-Spiel.", 390, 100);
         g.setFont(new Font("Arial", Font.BOLD , 20));
         g.drawString("Ihnen werden jetzt die Regeln des Spiel erklärt, wenn sie diese überspringen wollen klicken sie auf den Bildschirm", 420, 200);
-
+        g.drawString("Wählen sie eine der vorgegebenen Begriffe.", 460, 300);
 
     }
 }
