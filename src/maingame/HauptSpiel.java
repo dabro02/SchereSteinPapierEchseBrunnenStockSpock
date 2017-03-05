@@ -15,8 +15,7 @@ public class HauptSpiel {
     MainGame game;
     int skip = 0;
     PictureButtons scherebutton;
-    int y = 0;
-    int x = 0;
+
 
 
     //Konstruktor
@@ -24,11 +23,6 @@ public class HauptSpiel {
     {
         this.game = game;
         game.frame.setBounds(0,0,1920,1080);
-        try {
-            y = game.frame.getMousePosition().y;
-            x = game.frame.getMousePosition().x;
-        }
-        catch(Exception e){}
         game.frame.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -36,12 +30,14 @@ public class HauptSpiel {
                 {
                     if(true)
                         if(skip == 0)
-                            skip++;
+                        {System.out.println("halo");
+                            skip++;}
                     else if (skip ==1)
-                        if(scherebutton.buttonPointedpicture(x,y));
-                        {
-                            System.out.println("hallo es hat geklappt");
-                        }
+                        {if(game.maingame.scherebutton.buttonPointedpicture(e.getX(), e.getY()));
+                    {
+                        System.out.println("schere");
+                    }}
+
                 }
             }
 
@@ -86,13 +82,8 @@ public class HauptSpiel {
                     schere = ImageIO.read(new File("C:\\TestJavaGraphics\\Schere.png"));
                     g.drawImage(schere, 300,300, null );
                     scherebutton = new PictureButtons(300,300,300,300);
-                    if(scherebutton.buttonPointedpicture(x,y))
-                    {
-                        System.out.println("hallo");
-                        g.setColor(Color.DARK_GRAY);
-                        g.drawRect(300 + 1, 300 + 1, 300, 300);
-                        g.drawRect(300 + 2, 300 + 2, 300, 300);
-                    }
+                    scherebutton.renderpicturebutton(g);
+
                 }
                 catch(Exception e)
                 {

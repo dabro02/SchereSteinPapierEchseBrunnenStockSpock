@@ -52,6 +52,7 @@ public class MainFrame extends JPanel {
                 }
                 else if(game.activescreen == 2){
                     //continue regeln
+                    //
                 }
 
             }
@@ -100,6 +101,7 @@ public class MainFrame extends JPanel {
             }
         else if(game.activescreen == 2){
            game.maingame.renderHauptSpiel(g);
+
         }
 
 
@@ -133,7 +135,7 @@ public class MainFrame extends JPanel {
             }
             //if Einstellungen
             else if(game.activescreen == 2){
-
+                //game.maingame.scherebutton.buttonPointedpicture(x,y);
                 repaint();
             }
             //if Start

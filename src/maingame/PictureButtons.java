@@ -18,12 +18,25 @@ public class PictureButtons {
             //System.out.println(x +"  "+ y+"  "+w+"  "+h);
 
             if (mouseX >= x && mouseX <= x + w && mouseY >= y + 25 && mouseY <= y + 25 + h) {
+
+
                 point = true;
                 return point;
             }
             point = false;
             return point;
 
+        }
+
+        public void renderpicturebutton(Graphics2D g)
+        {
+            if(point)
+            {
+                System.out.println("hi");
+                g.setColor(Color.DARK_GRAY);
+                g.drawRect(x + 1, y + 1, w, h);
+                g.drawRect(x + 2, y + 2, w, h);
+            }
         }
 
     }
