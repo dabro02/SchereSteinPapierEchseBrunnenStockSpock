@@ -15,6 +15,8 @@ public class HauptSpiel {
     MainGame game;
     int skip = 0;
     PictureButtons scherebutton;
+    JLabel scherelabel;
+    Icon schereicon;
 
 
 
@@ -22,6 +24,14 @@ public class HauptSpiel {
     HauptSpiel(MainGame game)
     {
         this.game = game;
+        /*try {
+            schereicon = new ImageIcon(getClass().getResource("C:\\TestJavaGraphics\\Schere.png"));
+            scherelabel = new JLabel(schereicon);
+        }
+        catch(Exception e)
+        {
+
+        }*/
         game.frame.setBounds(0,0,1920,1080);
         game.frame.addMouseListener(new MouseListener() {
             @Override
@@ -82,8 +92,8 @@ public class HauptSpiel {
                 //"C:\\TestJavaGraphics\\Schere.png"
                     int xschere = 300;
                     int yschere = 300;
-                    int wschere = 640;
-                    int hschere = 640;
+                    int wschere = 300;
+                    int hschere = 300;
                     scherebutton = new PictureButtons(xschere,yschere,wschere,hschere);
                     scherebutton.renderpicturebutton(g);
             }
