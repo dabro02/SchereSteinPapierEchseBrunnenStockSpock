@@ -15,8 +15,7 @@ public class HauptSpiel {
     MainGame game;
     int skip = 0;
     PictureButtons scherebutton;
-    JLabel scherelabel;
-    Icon schereicon;
+    BufferedImage schere;
 
 
 
@@ -33,6 +32,7 @@ public class HauptSpiel {
 
         }*/
         game.frame.setBounds(0,0,1920,1080);
+
         game.frame.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -43,7 +43,10 @@ public class HauptSpiel {
                         {skip++;}
                     else if (skip ==1)
                         {
-                            if(game.maingame.scherebutton.buttonPointedpicture(e.getX(), e.getY()));
+                            //WARUM PRINTEST DU SCHERE?!
+                            boolean testbuttonpointed;
+                            testbuttonpointed = game.maingame.scherebutton.buttonPointedpicture(e.getX(), e.getY());
+                            if(testbuttonpointed);
                             {
                                 System.out.println("schere");
                             }
@@ -79,6 +82,8 @@ public class HauptSpiel {
     //rendermethode vom maingame
     public void renderHauptSpiel(Graphics2D g)
     {
+
+
             if(skip == 0) {
                 g.setFont(new Font("Arial", Font.BOLD, 24));
                 g.drawString("Hallo Benutzer und Herzlich Willkommen zum Schere-Stein-Papier-Echse-Brunnen-Stock-Spock-Spiel.", 390, 100);
@@ -88,12 +93,27 @@ public class HauptSpiel {
             if(skip ==1){
                 g.setFont(new Font("Arial", Font.BOLD, 20));
                 g.drawString("Wählen sie einen der Folgenden Begriffe.", 700,200);
-                //bild funktioniert noch nicht ganz unbedingt gucken woran das liegt, dass er egal wo man hinclickt "schere" ausgibt!!!
+                int y = 0;
+                int x = 0;
+                try {
+                    y = game.frame.getMousePosition().y;
+                    x = game.frame.getMousePosition().x;
+                }
+                catch(Exception e){}
+                int xschere = 300;
+                int yschere = 300;
+                int wschere = 225;
+                int hschere = 225;
+                // /bild funktioniert noch nicht ganz unbedingt gucken woran das liegt, dass er egal wo man hinclickt "schere" ausgibt!!!
                 //"C:\\TestJavaGraphics\\Schere.png"
-                    int xschere = 300;
-                    int yschere = 300;
-                    int wschere = 300;
-                    int hschere = 300;
+                try {
+                    schere = ImageIO.read(new File("C:\\TestJavaGraphics\\Schere.png"));
+                }
+                catch(Exception e)
+                {}
+                g.drawImage(schere, xschere,yschere, null);
+                //System.out.println(x+" "+ y);
+
                     scherebutton = new PictureButtons(xschere,yschere,wschere,hschere);
                     scherebutton.renderpicturebutton(g);
             }

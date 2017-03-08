@@ -15,16 +15,15 @@ public class PictureButtons {
         this.h = h;}
 
         public boolean buttonPointedpicture(int mouseX, int mouseY) {
-            //System.out.println(x +"  "+ y+"  "+w+"  "+h);
+            //System.out.println(mouseX + "  "+ mouseY);
 
             if (mouseX >= x && mouseX <= x + w && mouseY >= y + 25 && mouseY <= y + 25 + h) {
-
-
+                System.out.println("ja es hat geklappt");
                 point = true;
                 return point;
             }
-            point = false;
             return point;
+
 
         }
 
@@ -36,6 +35,7 @@ public class PictureButtons {
                 g.setColor(Color.DARK_GRAY);
                 g.drawRect(x + 1, y + 1, w, h);
                 g.drawRect(x + 2, y + 2, w, h);
+                point = false;
             }
         }
 
