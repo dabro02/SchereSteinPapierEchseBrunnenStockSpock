@@ -135,7 +135,10 @@ public class MainFrame extends JPanel {
             }
             //if Einstellungen
             else if(game.activescreen == 2){
-                //game.maingame.scherebutton.buttonPointedpicture(x,y);
+                try {
+                    game.maingame.updateMethode(x, y);
+                }
+                catch(Exception e) {}
                 repaint();
             }
             //if Start

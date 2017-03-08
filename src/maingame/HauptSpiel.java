@@ -18,41 +18,32 @@ public class HauptSpiel {
     BufferedImage schere;
 
 
-
     //Konstruktor
-    HauptSpiel(MainGame game)
-    {
+    HauptSpiel(MainGame game) {
         this.game = game;
-        /*try {
-            schereicon = new ImageIcon(getClass().getResource("C:\\TestJavaGraphics\\Schere.png"));
-            scherelabel = new JLabel(schereicon);
+        game.frame.setBounds(0, 0, 1920, 1080);
+        int xschere = 300;
+        int yschere = 300;
+        int wschere = 225;
+        int hschere = 225;
+        scherebutton = new PictureButtons(xschere, yschere, wschere, hschere);
+        //bild laden
+        try {
+            schere = ImageIO.read(new File("C:\\TestJavaGraphics\\Schere.png"));
+        } catch (Exception e) {
         }
-        catch(Exception e)
-        {
-
-        }*/
-        game.frame.setBounds(0,0,1920,1080);
-
         game.frame.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(game.activescreen== 2)
-                {
-                    if(true)
-                        if(skip == 0)
-                        {skip++;}
-                    else if (skip ==1)
-                        {
-                            //WARUM PRINTEST DU SCHERE?!
-                            boolean testbuttonpointed;
-                            testbuttonpointed = game.maingame.scherebutton.buttonPointedpicture(e.getX(), e.getY());
-                            if(testbuttonpointed);
-                            {
+                if (game.activescreen == 2) {
+                    if (true)
+                        if (skip == 0) {
+                            skip++;
+                        } else if (skip == 1) {
+                            if (scherebutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 System.out.println("schere");
                             }
-
                         }
-
                 }
             }
 
@@ -76,52 +67,37 @@ public class HauptSpiel {
 
             }
         });
-
     }
+
 
     //rendermethode vom maingame
-    public void renderHauptSpiel(Graphics2D g)
-    {
+    public void renderHauptSpiel(Graphics2D g) {
+        //initialisierung scherebutton
 
 
-            if(skip == 0) {
-                g.setFont(new Font("Arial", Font.BOLD, 24));
-                g.drawString("Hallo Benutzer und Herzlich Willkommen zum Schere-Stein-Papier-Echse-Brunnen-Stock-Spock-Spiel.", 390, 100);
-                g.setFont(new Font("Arial", Font.BOLD, 20));
-                g.drawString("Ihnen werden jetzt die Regeln des Spiel erklärt, Klicken sie auf den Bildschirm um weiter zu machen.", 470, 200);
-            }
-            if(skip ==1){
-                g.setFont(new Font("Arial", Font.BOLD, 20));
-                g.drawString("Wählen sie einen der Folgenden Begriffe.", 700,200);
-                int y = 0;
-                int x = 0;
-                try {
-                    y = game.frame.getMousePosition().y;
-                    x = game.frame.getMousePosition().x;
-                }
-                catch(Exception e){}
-                int xschere = 300;
-                int yschere = 300;
-                int wschere = 225;
-                int hschere = 225;
-                // /bild funktioniert noch nicht ganz unbedingt gucken woran das liegt, dass er egal wo man hinclickt "schere" ausgibt!!!
-                //"C:\\TestJavaGraphics\\Schere.png"
-                try {
-                    schere = ImageIO.read(new File("C:\\TestJavaGraphics\\Schere.png"));
-                }
-                catch(Exception e)
-                {}
-                g.drawImage(schere, xschere,yschere, null);
-                //System.out.println(x+" "+ y);
-
-                    scherebutton = new PictureButtons(xschere,yschere,wschere,hschere);
-                    scherebutton.renderpicturebutton(g);
-            }
-
-
-        //g.drawString("Wählen sie eine der vorgegebenen Begriffe.", 460, 300);
-
+        //Screen 1
+        if (skip == 0) {
+            g.setFont(new Font("Arial", Font.BOLD, 24));
+            g.drawString("Hallo Benutzer und Herzlich Willkommen zum Schere-Stein-Papier-Echse-Brunnen-Stock-Spock-Spiel.", 390, 100);
+            g.setFont(new Font("Arial", Font.BOLD, 20));
+            g.drawString("Ihnen werden jetzt die Regeln des Spiel erklärt, Klicken sie auf den Bildschirm um weiter zu machen.", 470, 200);
+        }
+        //Screen 2
+        if (skip == 1) {
+            g.setFont(new Font("Arial", Font.BOLD, 20));
+            g.drawString("Wählen sie einen der Folgenden Begriffe.", 700, 200);
+            g.drawImage(schere, 300, 300, null);
+            scherebutton.renderpicturebutton(g);
+        }
     }
 
-
+    //updateMethode
+    public void updateMethode(int x, int y) {
+        try {
+            if (skip == 1) {
+                scherebutton.buttonPointedpicture(x, y);
+            }
+        } catch (Exception e) {
+     }
+    }
 }
