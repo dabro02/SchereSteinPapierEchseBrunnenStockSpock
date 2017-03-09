@@ -66,26 +66,31 @@ public class HauptSpiel {
                             //clickactions: vielleicht macht man dass sich das ausgewählte Bild in die Mitte verschieben oder auf eine seite.
                             if (scherebutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                //Das möchte ich machen
-                                //schere.zurMitteBewegen();
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
                             }
                             else if (steinbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
                             }
                             else if (papierbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
                             }
                             else if (echsebutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
                             }
                             else if (stockbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
                             }
                             else if (spockbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
                             }
                             else if (brunnenbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
                             }
                         }
                         else if (skip == 2) {
@@ -169,7 +174,7 @@ public class HauptSpiel {
     boolean erreicht = true;
 
     public boolean zurMitteBewegen(Graphics2D g, int xpicture, int ypicture, BufferedImage image)
-            //TODO kann nicht auf bilder angewandt werden
+            //TODO was ich noch brauche ist das mit der Delta bewegung (wie wir das mit dem Fenster auch gemacht haben) bitte noch erklären oder einfügen
     {
         while(erreicht) {
             if (koordinatex != 500) {
