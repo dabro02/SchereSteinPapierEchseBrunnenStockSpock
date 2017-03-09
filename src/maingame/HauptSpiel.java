@@ -70,27 +70,27 @@ public class HauptSpiel {
                             }
                             else if (steinbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 450,500, stein);
                             }
                             else if (papierbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 650,750, papier);
                             }
                             else if (echsebutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 1000,750, echse);
                             }
                             else if (stockbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 1350,200, stock);
                             }
                             else if (spockbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 850,150, spock);
                             }
                             else if (brunnenbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
+                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 1200,500, brunnen);
                             }
                         }
                         else if (skip == 2) {
@@ -150,7 +150,6 @@ public class HauptSpiel {
             spockbutton.renderpicturebutton(g);
             brunnenbutton.renderpicturebutton(g);
         }
-
     }
 
     //updateMethode
@@ -169,39 +168,54 @@ public class HauptSpiel {
      }
     }
 
-    int koordinatex;
-    int koordinatey;
-    boolean erreicht = true;
+
+
 
     public boolean zurMitteBewegen(Graphics2D g, int xpicture, int ypicture, BufferedImage image)
             //TODO was ich noch brauche ist das mit der Delta bewegung (wie wir das mit dem Fenster auch gemacht haben) bitte noch erklären oder einfügen
     {
+        boolean erreicht = true;
+        int koordinatex;
+        int koordinatey;
+        koordinatex = xpicture;
+        koordinatey = ypicture;
+        g.clearRect(0,0,1920,1080);
+
         while(erreicht) {
-            if (koordinatex != 500) {
-                if(koordinatex < 500)
+
+            if (koordinatex != 600) {
+                if(koordinatex < 600)
                 {
                     koordinatex++;
+
                 }
-                else if(koordinatex > 500)
+                else if(koordinatex > 600)
                 {
                     koordinatex--;
                 }
             }
-            else if (koordinatey != 500) {
-                if(koordinatey < 500)
+            if (koordinatey != 400) {
+                if(koordinatey < 400)
                 {
                     koordinatey++;
                 }
-                if(koordinatey > 500)
+                if(koordinatey > 400)
                 {
                     koordinatey--;
                 }
             }
-            if(koordinatex == 500 && koordinatey == 500)
+            if(koordinatex == 600 && koordinatey == 400)
             {
                 erreicht = false;
             }
-            g.drawImage(image, xpicture, ypicture, null);
+
+            try {
+                Thread.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            g.drawImage(image, koordinatex, koordinatey, null);
         }
 
         erreicht = true;
