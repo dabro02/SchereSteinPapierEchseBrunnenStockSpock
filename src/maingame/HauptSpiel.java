@@ -47,12 +47,12 @@ public class HauptSpiel {
         //bilder laden
         try {
             schere = ImageIO.read(MainGame.class.getResource("Pictures\\Schere.png"));
-            stein = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Stein.png"));
-            papier = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Papier.png"));
-            echse = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Echse.png"));
-            stock = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Stock.png"));
-            spock = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Spock.png"));
-            brunnen = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Brunnen.png"));
+            stein = ImageIO.read(MainGame.class.getResource("Pictures\\Stein.png"));
+            papier = ImageIO.read(MainGame.class.getResource("Pictures\\Papier.png"));
+            echse = ImageIO.read(MainGame.class.getResource("Pictures\\Echse.png"));
+            stock = ImageIO.read(MainGame.class.getResource("Pictures\\Stock.png"));
+            spock = ImageIO.read(MainGame.class.getResource("Pictures\\Spock.png"));
+            brunnen = ImageIO.read(MainGame.class.getResource("Pictures\\Brunnen.png"));
         } catch (Exception e) {
         }
         game.frame.addMouseListener(new MouseListener() {
@@ -174,48 +174,71 @@ public class HauptSpiel {
     public boolean zurMitteBewegen(Graphics2D g, int xpicture, int ypicture, BufferedImage image)
             //TODO was ich noch brauche ist das mit der Delta bewegung (wie wir das mit dem Fenster auch gemacht haben) bitte noch erklären oder einfügen
     {
+        g.clearRect(0,0,1920,1080);
         boolean erreicht = true;
-        int koordinatex;
-        int koordinatey;
+        double koordinatex;
+        double koordinatey;
+        double abstandx;
+        double updatedschrittex = 0;
+        double abstandy;
+        double updatedschrittey = 0;
         koordinatex = xpicture;
         koordinatey = ypicture;
-        g.clearRect(0,0,1920,1080);
+        abstandx = koordinatex - 600;
+        abstandy = koordinatey - 400;
+        if( abstandx <= abstandy){
+            updatedschrittex = 0.5;
+            updatedschrittey = (abstandy/abstandx)/2;
+            if(updatedschrittey < 0)
+            {
+                updatedschrittey = updatedschrittey*(-1);
+            }
+        }
+        if( abstandx >= abstandy){
+            updatedschrittey = 0.5;
+            updatedschrittex = (abstandx/abstandy)/2;
+            if(updatedschrittex < 0)
+            {
+                updatedschrittex = updatedschrittex*(-1);
+            }
+        }
 
+        System.out.println(updatedschrittex+"   "+updatedschrittey);
         while(erreicht) {
 
             if (koordinatex != 600) {
                 if(koordinatex < 600)
                 {
-                    koordinatex++;
-
+                    koordinatex = koordinatex + updatedschrittex;
                 }
                 else if(koordinatex > 600)
                 {
-                    koordinatex--;
+                    koordinatex = koordinatex - updatedschrittex;
                 }
             }
             if (koordinatey != 400) {
                 if(koordinatey < 400)
                 {
-                    koordinatey++;
+                    koordinatey = koordinatey + updatedschrittey;
                 }
                 if(koordinatey > 400)
                 {
-                    koordinatey--;
+                    koordinatey = koordinatey - updatedschrittey;
                 }
             }
-            if(koordinatex == 600 && koordinatey == 400)
+
+            if((int) koordinatex == 600 && (int) koordinatey == 400)
             {
                 erreicht = false;
+
             }
 
             try {
-                Thread.sleep(2);
+                Thread.sleep(0,750000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            g.drawImage(image, koordinatex, koordinatey, null);
+            g.drawImage(image, (int) koordinatex, (int) koordinatey, null);
         }
 
         erreicht = true;
