@@ -1,6 +1,7 @@
 package maingame;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by Daniel on 05.03.2017.
@@ -17,12 +18,12 @@ public class PictureButtons {
         public boolean buttonPointedpicture(int mouseX, int mouseY) {
             //System.out.println(mouseX + "  "+ mouseY);
 
-            if (mouseX >= x && mouseX <= x + w && mouseY >= y + 25 && mouseY <= y + 25 + h) {
-                //System.out.println("ja es hat geklappt");
-                point = true;
+                if (mouseX >= x && mouseX <= x + w && mouseY >= y + 25 && mouseY <= y + 25 + h) {
+                    //System.out.println("ja es hat geklappt");
+                    point = true;
+                    return point;
+                }
                 return point;
-            }
-            return point;
 
 
         }
@@ -38,6 +39,7 @@ public class PictureButtons {
                 point = false;
             }
         }
+
 
 
     }

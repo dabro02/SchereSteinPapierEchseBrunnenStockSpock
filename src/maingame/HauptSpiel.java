@@ -65,26 +65,31 @@ public class HauptSpiel {
                         } else if (skip == 1) {
                             //clickactions: vielleicht macht man dass sich das ausgewählte Bild in die Mitte verschieben oder auf eine seite.
                             if (scherebutton.buttonPointedpicture(e.getX(), e.getY())) {
-                                System.out.println("schere");
+                                skip = 2;
+                                //Das möchte ich machen
+                                //schere.zurMitteBewegen();
                             }
                             else if (steinbutton.buttonPointedpicture(e.getX(), e.getY())) {
-                                System.out.println("stein");
+                                skip = 2;
                             }
                             else if (papierbutton.buttonPointedpicture(e.getX(), e.getY())) {
-                                System.out.println("papier");
+                                skip = 2;
                             }
                             else if (echsebutton.buttonPointedpicture(e.getX(), e.getY())) {
-                                System.out.println("echse");
+                                skip = 2;
                             }
                             else if (stockbutton.buttonPointedpicture(e.getX(), e.getY())) {
-                                System.out.println("stock");
+                                skip = 2;
                             }
                             else if (spockbutton.buttonPointedpicture(e.getX(), e.getY())) {
-                                System.out.println("spock");
+                                skip = 2;
                             }
                             else if (brunnenbutton.buttonPointedpicture(e.getX(), e.getY())) {
-                                System.out.println("brunnen");
+                                skip = 2;
                             }
+                        }
+                        else if (skip == 2) {
+
                         }
                 }
             }
@@ -140,6 +145,7 @@ public class HauptSpiel {
             spockbutton.renderpicturebutton(g);
             brunnenbutton.renderpicturebutton(g);
         }
+
     }
 
     //updateMethode
@@ -157,4 +163,46 @@ public class HauptSpiel {
         } catch (Exception e) {
      }
     }
+
+    int koordinatex;
+    int koordinatey;
+    boolean erreicht = true;
+
+    public boolean zurMitteBewegen(Graphics2D g, int xpicture, int ypicture, BufferedImage image)
+            //TODO kann nicht auf bilder angewandt werden
+    {
+        while(erreicht) {
+            if (koordinatex != 500) {
+                if(koordinatex < 500)
+                {
+                    koordinatex++;
+                }
+                else if(koordinatex > 500)
+                {
+                    koordinatex--;
+                }
+            }
+            else if (koordinatey != 500) {
+                if(koordinatey < 500)
+                {
+                    koordinatey++;
+                }
+                if(koordinatey > 500)
+                {
+                    koordinatey--;
+                }
+            }
+            if(koordinatex == 500 && koordinatey == 500)
+            {
+                erreicht = false;
+            }
+            g.drawImage(image, xpicture, ypicture, null);
+        }
+
+        erreicht = true;
+        return erreicht;
+
+    }
+
+
 }
