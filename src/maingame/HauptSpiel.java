@@ -22,6 +22,13 @@ public class HauptSpiel {
     BufferedImage papier;
     PictureButtons echsebutton;
     BufferedImage echse;
+    PictureButtons stockbutton;
+    BufferedImage stock;
+    PictureButtons spockbutton;
+    BufferedImage spock;
+    PictureButtons brunnenbutton;
+    BufferedImage brunnen;
+
 
 
 
@@ -32,14 +39,20 @@ public class HauptSpiel {
         scherebutton = new PictureButtons(300, 200, 225, 225);
         steinbutton = new PictureButtons( 450,500,225,225);
         papierbutton = new PictureButtons( 650,750,225,225);
+        spockbutton = new PictureButtons( 850, 150, 225,225);
         echsebutton = new PictureButtons( 1000, 750, 225,225);
+        brunnenbutton = new PictureButtons( 1200, 500,225,225);
+        stockbutton = new PictureButtons(1350 ,200,225,225);
 
         //bilder laden
         try {
-            schere = ImageIO.read(new File("C:\\TestJavaGraphics\\Schere.png"));
-            stein = ImageIO.read(new File("C:\\TestJavaGraphics\\Stein.png"));
-            papier = ImageIO.read(new File("C:\\TestJavaGraphics\\Papier.png"));
-            echse = ImageIO.read(new File("C:\\TestJavaGraphics\\Echse1.png"));
+            schere = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Schere.png"));
+            stein = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Stein.png"));
+            papier = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Papier.png"));
+            echse = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Echse.png"));
+            stock = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Stock.png"));
+            spock = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Spock.png"));
+            brunnen = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Brunnen.png"));
         } catch (Exception e) {
         }
         game.frame.addMouseListener(new MouseListener() {
@@ -62,6 +75,15 @@ public class HauptSpiel {
                             }
                             else if (echsebutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 System.out.println("echse");
+                            }
+                            else if (stockbutton.buttonPointedpicture(e.getX(), e.getY())) {
+                                System.out.println("stock");
+                            }
+                            else if (spockbutton.buttonPointedpicture(e.getX(), e.getY())) {
+                                System.out.println("spock");
+                            }
+                            else if (brunnenbutton.buttonPointedpicture(e.getX(), e.getY())) {
+                                System.out.println("brunnen");
                             }
                         }
                 }
@@ -102,15 +124,21 @@ public class HauptSpiel {
         //Screen 2
         if (skip == 1) {
             g.setFont(new Font("Arial", Font.BOLD, 20));
-            g.drawString("Wählen sie einen der Folgenden Begriffe.", 700, 100);
+            g.drawString("Wählen sie einen der Folgenden Begriffe.", 775, 100);
             g.drawImage(schere, 300, 200, null);
             g.drawImage(stein, 450, 500,null);
             g.drawImage(papier, 650,750,null);
             g.drawImage(echse, 1000, 750, null);
+            g.drawImage(brunnen, 1200, 500, null);
+            g.drawImage(spock, 850, 150, null);
+            g.drawImage(stock, 1350, 200, null);
             scherebutton.renderpicturebutton(g);
             steinbutton.renderpicturebutton(g);
             papierbutton.renderpicturebutton(g);
             echsebutton.renderpicturebutton(g);
+            stockbutton.renderpicturebutton(g);
+            spockbutton.renderpicturebutton(g);
+            brunnenbutton.renderpicturebutton(g);
         }
     }
 
@@ -122,6 +150,9 @@ public class HauptSpiel {
                 steinbutton.buttonPointedpicture( x, y);
                 papierbutton.buttonPointedpicture(x,y );
                 echsebutton.buttonPointedpicture(x,y);
+                stockbutton.buttonPointedpicture(x,y);
+                spockbutton.buttonPointedpicture(x,y);
+                brunnenbutton.buttonPointedpicture(x,y);
             }
         } catch (Exception e) {
      }
