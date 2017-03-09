@@ -46,7 +46,7 @@ public class HauptSpiel {
 
         //bilder laden
         try {
-            schere = ImageIO.read(new File(MainGame.class.getResource("Pictures\\Schere.png"));
+            schere = ImageIO.read(MainGame.class.getResource("Pictures\\Schere.png"));
             stein = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Stein.png"));
             papier = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Papier.png"));
             echse = ImageIO.read(new File("C:\\Users\\Daniel\\IdeaProjects\\SchereSteinPapierEchseBrunnenStockSpock\\out\\production\\SchereSteinPapierEchseBrunnenStockSpock\\maingame\\Echse.png"));
