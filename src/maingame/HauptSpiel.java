@@ -36,6 +36,7 @@ public class HauptSpiel {
     HauptSpiel(MainGame game) {
         this.game = game;
         game.frame.setBounds(0, 0, 1920, 1080);
+
         scherebutton = new PictureButtons(300, 200, 225, 225);
         steinbutton = new PictureButtons( 450,500,225,225);
         papierbutton = new PictureButtons( 650,750,225,225);
@@ -172,57 +173,24 @@ public class HauptSpiel {
 
 
 
-    public boolean zurMitteBewegen(Graphics2D g, int xpicture, int ypicture, BufferedImage image)
+    public boolean zurMitteBewegen(Graphics2D g, int xPicture, int yPicture, BufferedImage image)
     {
         double start = System.nanoTime();
-        double prozentsatz;
+        double prozentsatz = 0;
         g.clearRect(0,0,1920,1080);
         boolean erreicht = true;
-        double koordinatex;
-        double koordinatey;
-        double abstandx;
-        double abstandy;
-        koordinatex = xpicture;
-        koordinatey = ypicture;
-        while(erreicht) {
-            prozentsatz = (System.nanoTime()-start)/(2.5*1000000000);
-            if (koordinatex != 600) {
-                if(koordinatex <600)
-                {
-                    koordinatex = (koordinatex-600)*prozentsatz+xpicture;
+        double koordinateX;
+        double koordinateY;
+        koordinateX = xPicture;
+        koordinateY = yPicture;
+        while(prozentsatz<=1) {
+            prozentsatz = (System.nanoTime()-start)/(2.5*1000*1000000);
+            System.out.println(prozentsatz);
+            koordinateX = (600-koordinateX)*prozentsatz+xPicture;
 
-                }
-                if(koordinatex >600)
-                {
-                    koordinatex = (koordinatex-600)*prozentsatz+xpicture;
-                }
-            }
-            if (koordinatey != 400) {
+            koordinateY = (400-koordinateY)*prozentsatz+yPicture;
 
-                if(koordinatey <400)
-                {
-                    koordinatey = (koordinatey-400)*prozentsatz+ypicture;
-
-                }
-                if(koordinatey >400)
-                {
-                    koordinatey = (koordinatey-400)*prozentsatz+ypicture;
-                }
-            }
-
-
-            if( koordinatex <= 601 && koordinatex >= 599 &&  koordinatey <= 401 && koordinatey >= 399)
-            {
-                erreicht = false;
-            }
-
-            try {
-                Thread.sleep(0,100000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            g.drawImage(image, (int) koordinatex, (int) koordinatey, null);
-
+            g.drawImage(image, (int) koordinateX, (int) koordinateY, null);
         }
         skip = 3;
         erreicht = true;
