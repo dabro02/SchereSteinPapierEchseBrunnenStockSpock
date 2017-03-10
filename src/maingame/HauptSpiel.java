@@ -186,9 +186,9 @@ public class HauptSpiel {
         while(prozentsatz<=1) {
             prozentsatz = (System.nanoTime()-start)/(2.5*1000*1000000);
             System.out.println(prozentsatz);
-            koordinateX = (600-koordinateX)*prozentsatz+xPicture;
+            koordinateX = (600-xPicture)*prozentsatz+xPicture;
 
-            koordinateY = (400-koordinateY)*prozentsatz+yPicture;
+            koordinateY = (400-yPicture)*prozentsatz+yPicture;
 
             g.drawImage(image, (int) koordinateX, (int) koordinateY, null);
             g.drawRect(600,400,2,2);
