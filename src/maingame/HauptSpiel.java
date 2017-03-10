@@ -171,76 +171,60 @@ public class HauptSpiel {
 
 
 
+
     public boolean zurMitteBewegen(Graphics2D g, int xpicture, int ypicture, BufferedImage image)
-            //TODO was ich noch brauche ist das mit der Delta bewegung (wie wir das mit dem Fenster auch gemacht haben) bitte noch erklären oder einfügen
     {
+        double start = System.nanoTime();
+        double prozentsatz;
         g.clearRect(0,0,1920,1080);
         boolean erreicht = true;
         double koordinatex;
         double koordinatey;
         double abstandx;
-        double updatedschrittex = 0;
         double abstandy;
-        double updatedschrittey = 0;
         koordinatex = xpicture;
         koordinatey = ypicture;
-        abstandx = koordinatex - 600;
-        abstandy = koordinatey - 400;
-        if( abstandx <= abstandy){
-            updatedschrittex = 0.5;
-            updatedschrittey = (abstandy/abstandx)/2;
-            if(updatedschrittey < 0)
-            {
-                updatedschrittey = updatedschrittey*(-1);
-            }
-        }
-        if( abstandx >= abstandy){
-            updatedschrittey = 0.5;
-            updatedschrittex = (abstandx/abstandy)/2;
-            if(updatedschrittex < 0)
-            {
-                updatedschrittex = updatedschrittex*(-1);
-            }
-        }
-
-        System.out.println(updatedschrittex+"   "+updatedschrittey);
         while(erreicht) {
-
+            prozentsatz = (System.nanoTime()-start)/(2.5*1000000000);
             if (koordinatex != 600) {
-                if(koordinatex < 600)
+                if(koordinatex <600)
                 {
-                    koordinatex = koordinatex + updatedschrittex;
+                    koordinatex = (koordinatex-600)*prozentsatz+xpicture;
+
                 }
-                else if(koordinatex > 600)
+                if(koordinatex >600)
                 {
-                    koordinatex = koordinatex - updatedschrittex;
+                    koordinatex = (koordinatex-600)*prozentsatz+xpicture;
                 }
             }
             if (koordinatey != 400) {
-                if(koordinatey < 400)
+
+                if(koordinatey <400)
                 {
-                    koordinatey = koordinatey + updatedschrittey;
+                    koordinatey = (koordinatey-400)*prozentsatz+ypicture;
+
                 }
-                if(koordinatey > 400)
+                if(koordinatey >400)
                 {
-                    koordinatey = koordinatey - updatedschrittey;
+                    koordinatey = (koordinatey-400)*prozentsatz+ypicture;
                 }
             }
 
-            if((int) koordinatex == 600 && (int) koordinatey == 400)
+
+            if( koordinatex <= 601 && koordinatex >= 599 &&  koordinatey <= 401 && koordinatey >= 399)
             {
                 erreicht = false;
-
             }
 
             try {
-                Thread.sleep(0,750000);
+                Thread.sleep(0,100000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             g.drawImage(image, (int) koordinatex, (int) koordinatey, null);
-        }
 
+        }
+        skip = 3;
         erreicht = true;
         return erreicht;
 
