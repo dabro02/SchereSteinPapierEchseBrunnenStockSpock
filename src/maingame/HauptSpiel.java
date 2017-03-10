@@ -1,12 +1,11 @@
 package maingame;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.util.Random;
 
 /**
  * Created by Daniel on 05.03.2017.
@@ -14,6 +13,9 @@ import java.io.File;
 public class HauptSpiel {
     MainGame game;
     int skip = 0;
+    int card = 0;
+    BufferedImage actualImage;
+    BufferedImage computerImage;
     PictureButtons scherebutton;
     BufferedImage schere;
     PictureButtons steinbutton;
@@ -67,31 +69,31 @@ public class HauptSpiel {
                             //clickactions: vielleicht macht man dass sich das ausgewählte Bild in die Mitte verschieben oder auf eine seite.
                             if (scherebutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300,200, schere);
+                                card = 7;
                             }
                             else if (steinbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 450,500, stein);
+                                card = 1;
                             }
                             else if (papierbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 650,750, papier);
+                                card = 2;
                             }
                             else if (echsebutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 1000,750, echse);
+                                card = 3;
                             }
                             else if (stockbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 1350,200, stock);
+                                card = 4;
                             }
                             else if (spockbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 850,150, spock);
+                                card = 5;
                             }
                             else if (brunnenbutton.buttonPointedpicture(e.getX(), e.getY())) {
                                 skip = 2;
-                                zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 1200,500, brunnen);
+                                card = 6;
                             }
                         }
                         else if (skip == 2) {
@@ -133,7 +135,7 @@ public class HauptSpiel {
             g.drawString("Ihnen werden jetzt die Regeln des Spiel erklärt, Klicken sie auf den Bildschirm um weiter zu machen.", 470, 200);
         }
         //Screen 2
-        if (skip == 1) {
+        else if (skip == 1) {
             g.setFont(new Font("Arial", Font.BOLD, 20));
             g.drawString("Wählen sie einen der Folgenden Begriffe.", 775, 100);
             g.drawImage(schere, 300, 200, null);
@@ -151,6 +153,20 @@ public class HauptSpiel {
             spockbutton.renderpicturebutton(g);
             brunnenbutton.renderpicturebutton(g);
         }
+        else if(skip == 3)
+        {
+            g.drawImage(actualImage, 600, 400, null);
+        }
+        else if (skip == 4)
+        {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            g.drawImage(actualImage, 600, 400, null);
+            g.drawImage(computerImage, 1200, 400, null);
+        }
     }
 
     //updateMethode
@@ -163,8 +179,36 @@ public class HauptSpiel {
                 echsebutton.buttonPointedpicture(x,y);
                 stockbutton.buttonPointedpicture(x,y);
                 spockbutton.buttonPointedpicture(x,y);
-                brunnenbutton.buttonPointedpicture(x,y);
-            }
+                brunnenbutton.buttonPointedpicture(x,y);}
+                else if (skip == 2) {
+                    if (card == 7) {
+                        zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300, 200, schere);
+
+                    } else if (card == 1) {
+                        zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 450, 500, stein);
+
+                    } else if (card == 2) {
+                        zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 650, 750, papier);
+
+                    } else if (card == 3) {
+                        zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 1000, 750, echse);
+
+                    } else if (card == 4) {
+                        zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 1350, 200, stock);
+
+                    } else if (card == 5) {
+                        zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 850, 150, spock);
+
+                    } else if (card == 6) {
+                        zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 1200, 500, brunnen);
+
+                    }
+                }
+                else if (skip == 3)
+                    {
+                        computerSelect();
+                    }
+
         } catch (Exception e) {
      }
     }
@@ -173,31 +217,66 @@ public class HauptSpiel {
 
 
 
-    public boolean zurMitteBewegen(Graphics2D g, int xPicture, int yPicture, BufferedImage image)
+    public void zurMitteBewegen(Graphics2D g, int xPicture, int yPicture, BufferedImage image)
     {
         double start = System.nanoTime();
         double prozentsatz = 0;
         g.clearRect(0,0,1920,1080);
-        boolean erreicht = true;
         double koordinateX;
         double koordinateY;
         koordinateX = xPicture;
         koordinateY = yPicture;
         while(prozentsatz<=1) {
-            prozentsatz = (System.nanoTime()-start)/(2.5*1000*1000000);
+            prozentsatz = (System.nanoTime()-start)/(1*1000*1000000);
             System.out.println(prozentsatz);
             koordinateX = (600-xPicture)*prozentsatz+xPicture;
 
             koordinateY = (400-yPicture)*prozentsatz+yPicture;
 
             g.drawImage(image, (int) koordinateX, (int) koordinateY, null);
-            g.drawRect(600,400,2,2);
         }
         skip = 3;
-        erreicht = true;
-        return erreicht;
-
+        actualImage = image;
     }
 
+    public void computerSelect()
+    {
+        Random random = new Random();
 
+
+        switch (random.nextInt(7))
+        {
+            case 0:
+                computerImage = schere;
+                skip = 4;
+                break;
+            case 1:
+                computerImage = stein;
+                skip = 4;
+                break;
+            case 2:
+                computerImage = papier;
+                skip = 4;
+                break;
+            case 3:
+                computerImage = echse;
+                skip = 4;
+                break;
+            case 4:
+                computerImage = brunnen;
+                skip = 4;
+                break;
+            case 5:
+                computerImage = stock;
+                skip = 4;
+                break;
+            case 6:
+                computerImage = spock;
+                skip = 4;
+                break;
+            default:
+                skip = 4;
+                break;
+        }
+    }
 }
