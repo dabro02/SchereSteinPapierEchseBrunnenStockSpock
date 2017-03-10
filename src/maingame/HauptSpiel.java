@@ -191,6 +191,7 @@ public class HauptSpiel {
             koordinateY = (400-koordinateY)*prozentsatz+yPicture;
 
             g.drawImage(image, (int) koordinateX, (int) koordinateY, null);
+            g.drawRect(600,400,2,2);
         }
         skip = 3;
         erreicht = true;
