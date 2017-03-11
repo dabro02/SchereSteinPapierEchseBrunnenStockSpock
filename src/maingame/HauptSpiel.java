@@ -129,6 +129,7 @@ public class HauptSpiel {
     public void renderHauptSpiel(Graphics2D g) {
         //Screen 1
         if (skip == 0) {
+            System.out.println(skip);
             g.setFont(new Font("Arial", Font.BOLD, 24));
             g.drawString("Hallo Benutzer und Herzlich Willkommen zum Schere-Stein-Papier-Echse-Brunnen-Stock-Spock-Spiel.", 390, 100);
             g.setFont(new Font("Arial", Font.BOLD, 20));
@@ -136,6 +137,7 @@ public class HauptSpiel {
         }
         //Screen 2
         else if (skip == 1) {
+            System.out.println(skip);
             g.setFont(new Font("Arial", Font.BOLD, 20));
             g.drawString("Wählen sie einen der Folgenden Begriffe.", 775, 100);
             g.drawImage(schere, 300, 200, null);
@@ -155,17 +157,47 @@ public class HauptSpiel {
         }
         else if(skip == 3)
         {
+            System.out.println(skip);
             g.drawImage(actualImage, 600, 400, null);
+            skip = 4;
         }
-        else if (skip == 4)
+        else if (skip == 5)
         {
+            System.out.println(skip);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            g.drawImage(actualImage, 600, 400, null);
-            g.drawImage(computerImage, 1200, 400, null);
+            for(int h = 0; h <= 1000; h++)
+            {
+                g.drawImage(actualImage, 600, 400, null);
+                g.drawImage(computerImage, 1200, 400, null);
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            skip= 6;
+        }
+        else if (skip == 7)
+        {
+            System.out.println(skip);
+            g.setFont(new Font("Arial",Font.BOLD,25));
+            if(winOrLose() == 1)
+            {
+
+                g.drawString("Yeah! Du hast gewonnen." , 830, 500);
+            }
+            else if(winOrLose() == 0)
+            {
+                g.drawString("Schade! Du hast verloren." , 830, 500);
+            }
+            else if(winOrLose() == 2)
+            {
+                g.drawString("Unentschieden! Versuche es nocheinmal." , 820, 500);
+            }
         }
     }
 
@@ -181,6 +213,7 @@ public class HauptSpiel {
                 spockbutton.buttonPointedpicture(x,y);
                 brunnenbutton.buttonPointedpicture(x,y);}
                 else if (skip == 2) {
+                System.out.println(skip);
                     if (card == 7) {
                         zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300, 200, schere);
 
@@ -204,9 +237,19 @@ public class HauptSpiel {
 
                     }
                 }
-                else if (skip == 3)
+                else if (skip == 4)
                     {
+                        System.out.println(skip);
                         computerSelect();
+                        skip = 5;
+                    }
+                else if(skip == 6)
+                    {
+                        System.out.println(skip);
+                        if(winOrLose() <=2 && winOrLose() >= 0)
+                        {
+                            skip = 7;
+                        }
                     }
 
         } catch (Exception e) {
@@ -228,7 +271,7 @@ public class HauptSpiel {
         koordinateY = yPicture;
         while(prozentsatz<=1) {
             prozentsatz = (System.nanoTime()-start)/(1*1000*1000000);
-            System.out.println(prozentsatz);
+            //System.out.println(prozentsatz);
             koordinateX = (600-xPicture)*prozentsatz+xPicture;
 
             koordinateY = (400-yPicture)*prozentsatz+yPicture;
@@ -248,35 +291,252 @@ public class HauptSpiel {
         {
             case 0:
                 computerImage = schere;
-                skip = 4;
                 break;
             case 1:
                 computerImage = stein;
-                skip = 4;
                 break;
             case 2:
                 computerImage = papier;
-                skip = 4;
                 break;
             case 3:
                 computerImage = echse;
-                skip = 4;
                 break;
             case 4:
                 computerImage = brunnen;
-                skip = 4;
                 break;
             case 5:
                 computerImage = stock;
-                skip = 4;
                 break;
             case 6:
                 computerImage = spock;
-                skip = 4;
                 break;
             default:
-                skip = 4;
                 break;
         }
     }
+
+    public int winOrLose()
+    {
+        if(computerImage==schere)
+        {
+            if(actualImage == schere)
+            {
+                return 2;
+            }
+            else if (actualImage == stein)
+            {
+                return 0;
+            }
+            else if (actualImage == papier)
+            {
+                return 1;
+            }
+            else if (actualImage == echse)
+            {
+                return 1;
+            }
+            else if (actualImage == brunnen)
+            {
+                return 0;
+            }
+            else if (actualImage == stock)
+            {
+                return 1;
+            }
+            else if (actualImage == spock)
+            {
+                return 0;
+            }
+        }
+        else if(computerImage==stein)
+        {
+            if(actualImage == schere)
+            {
+                return 1;
+            }
+            else if (actualImage == stein)
+            {
+                return 2;
+            }
+            else if (actualImage == papier)
+            {
+                return 0;
+            }
+            else if (actualImage == echse)
+            {
+                return 1;
+            }
+            else if (actualImage == brunnen)
+            {
+                return 0;
+            }
+            else if (actualImage == stock)
+            {
+                return 1;
+            }
+            else if (actualImage == spock)
+            {
+                return 0;
+            }
+        }
+        else if(computerImage==papier)
+        {
+            if(actualImage == schere)
+            {
+                return 0;
+            }
+            else if (actualImage == stein)
+            {
+                return 1;
+            }
+            else if (actualImage == papier)
+            {
+                return 2;
+            }
+            else if (actualImage == echse)
+            {
+                return 0;
+            }
+            else if (actualImage == brunnen)
+            {
+                return 1;
+            }
+            else if (actualImage == stock)
+            {
+                return 0;
+            }
+            else if (actualImage == spock)
+            {
+                return 1;
+            }
+        }
+        else if(computerImage==echse)
+        {
+            if(actualImage == schere)
+            {
+                return 0;
+            }
+            else if (actualImage == stein)
+            {
+                return 0;
+            }
+            else if (actualImage == papier)
+            {
+                return 1;
+            }
+            else if (actualImage == echse)
+            {
+                return 2;
+            }
+            else if (actualImage == brunnen)
+            {
+                return 1;
+            }
+            else if (actualImage == stock)
+            {
+                return 0;
+            }
+            else if (actualImage == spock)
+            {
+                return 1;
+            }
+        }
+        else if(computerImage==brunnen)
+        {
+            if(actualImage == schere)
+            {
+                return 1;
+            }
+            else if (actualImage == stein)
+            {
+                return 1;
+            }
+            else if (actualImage == papier)
+            {
+                return 0;
+            }
+            else if (actualImage == echse)
+            {
+                return 0;
+            }
+            else if (actualImage == brunnen)
+            {
+                return 2;
+            }
+            else if (actualImage == stock)
+            {
+                return 0;
+            }
+            else if (actualImage == spock)
+            {
+                return 1;
+            }
+        }
+        else if(computerImage==stock)
+        {
+            if(actualImage == schere)
+            {
+                return 0;
+            }
+            else if (actualImage == stein)
+            {
+                return 0;
+            }
+            else if (actualImage == papier)
+            {
+                return 1;
+            }
+            else if (actualImage == echse)
+            {
+                return 1;
+            }
+            else if (actualImage == brunnen)
+            {
+                return 1;
+            }
+            else if (actualImage == stock)
+            {
+                return 2;
+            }
+            else if (actualImage == spock)
+            {
+                return 0;
+            }
+        }
+        else if(computerImage==spock)
+        {
+            if(actualImage == schere)
+            {
+                return 1;
+            }
+            else if (actualImage == stein)
+            {
+                return 1;
+            }
+            else if (actualImage == papier)
+            {
+                return 0;
+            }
+            else if (actualImage == echse)
+            {
+                return 0;
+            }
+            else if (actualImage == brunnen)
+            {
+                return 0;
+            }
+            else if (actualImage == stock)
+            {
+                return 1;
+            }
+            else if (actualImage == spock)
+            {
+                return 2;
+            }
+        }
+        return 4;
+
+    }
+
+
 }
