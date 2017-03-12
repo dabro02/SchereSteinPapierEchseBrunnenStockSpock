@@ -16,6 +16,10 @@ public class HauptSpiel {
     int card = 0;
     BufferedImage actualImage;
     BufferedImage computerImage;
+    BufferedImage gewonnen;
+    BufferedImage gewonnentüte;
+    BufferedImage gewonnenglocke;
+    BufferedImage verloren;
     PictureButtons scherebutton;
     BufferedImage schere;
     PictureButtons steinbutton;
@@ -56,6 +60,10 @@ public class HauptSpiel {
             stock = ImageIO.read(MainGame.class.getResource("Pictures\\Stock.png"));
             spock = ImageIO.read(MainGame.class.getResource("Pictures\\Spock.png"));
             brunnen = ImageIO.read(MainGame.class.getResource("Pictures\\Brunnen.png"));
+            gewonnen = ImageIO.read(MainGame.class.getResource("Pictures\\Gewonnen.jpeg"));
+            gewonnentüte = ImageIO.read(MainGame.class.getResource("Pictures\\Gewonnentüte.jpeg"));
+            gewonnenglocke = ImageIO.read(MainGame.class.getResource("Pictures\\Gewonnenglocke.jpeg"));
+            verloren = ImageIO.read(MainGame.class.getResource("Pictures\\Verloren.jpeg"));
         } catch (Exception e) {
         }
         game.frame.addMouseListener(new MouseListener() {
@@ -96,8 +104,8 @@ public class HauptSpiel {
                                 card = 6;
                             }
                         }
-                        else if (skip == 2) {
-
+                        else if (skip == 6) {
+                            skip = 7;
                         }
                 }
             }
@@ -129,7 +137,6 @@ public class HauptSpiel {
     public void renderHauptSpiel(Graphics2D g) {
         //Screen 1
         if (skip == 0) {
-            System.out.println(skip);
             g.setFont(new Font("Arial", Font.BOLD, 24));
             g.drawString("Hallo Benutzer und Herzlich Willkommen zum Schere-Stein-Papier-Echse-Brunnen-Stock-Spock-Spiel.", 390, 100);
             g.setFont(new Font("Arial", Font.BOLD, 20));
@@ -137,7 +144,6 @@ public class HauptSpiel {
         }
         //Screen 2
         else if (skip == 1) {
-            System.out.println(skip);
             g.setFont(new Font("Arial", Font.BOLD, 20));
             g.drawString("Wählen sie einen der Folgenden Begriffe.", 775, 100);
             g.drawImage(schere, 300, 200, null);
@@ -157,46 +163,50 @@ public class HauptSpiel {
         }
         else if(skip == 3)
         {
-            System.out.println(skip);
             g.drawImage(actualImage, 600, 400, null);
             skip = 4;
         }
         else if (skip == 5)
         {
-            System.out.println(skip);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            for(int h = 0; h <= 1000; h++)
-            {
-                g.drawImage(actualImage, 600, 400, null);
-                g.drawImage(computerImage, 1200, 400, null);
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            skip= 6;
+            skip = 6;
         }
-        else if (skip == 7)
+        else if (skip == 6)
         {
-            System.out.println(skip);
+            g.drawImage(actualImage, 600, 400, null);
+            g.drawImage(computerImage, 1200, 400, null);
+            g.setFont(new Font("Arial",Font.BOLD,25));
+            g.drawString("Klicken um das Ergebnis einzusehen.",785,200);
+        }
+        else if (skip == 8)
+       {
+            g.drawImage(actualImage, 600, 400, null);
+            g.drawImage(computerImage, 1200, 400, null);
             g.setFont(new Font("Arial",Font.BOLD,25));
             if(winOrLose() == 1)
             {
-
-                g.drawString("Yeah! Du hast gewonnen." , 830, 500);
+                g.drawString("Yeah! Du hast gewonnen." , 810, 200);
+                g.drawImage(gewonnen, 500,200,null);
+                g.drawImage(gewonnen, 1100,200,null);
+                g.drawImage(gewonnentüte , 400,700,null);
+                g.drawImage(gewonnentüte, 1000,600,null);
+                g.drawImage(gewonnentüte, 200,300,null);
+                g.drawImage(gewonnenglocke, 1700,350,null);
+                g.drawImage(gewonnenglocke, 1600,800,null);
             }
             else if(winOrLose() == 0)
             {
-                g.drawString("Schade! Du hast verloren." , 830, 500);
+                g.drawString("Schade! Du hast verloren." , 830, 200);
+                g.drawImage(verloren, 500,200,null);
+                g.drawImage(verloren, 1200,200,null);
             }
             else if(winOrLose() == 2)
             {
-                g.drawString("Unentschieden! Versuche es nocheinmal." , 820, 500);
+                g.drawString("Unentschieden! Versuche es nocheinmal." , 785, 200);
             }
         }
     }
@@ -213,7 +223,6 @@ public class HauptSpiel {
                 spockbutton.buttonPointedpicture(x,y);
                 brunnenbutton.buttonPointedpicture(x,y);}
                 else if (skip == 2) {
-                System.out.println(skip);
                     if (card == 7) {
                         zurMitteBewegen((Graphics2D) game.frame1.getGraphics(), 300, 200, schere);
 
@@ -239,16 +248,13 @@ public class HauptSpiel {
                 }
                 else if (skip == 4)
                     {
-                        System.out.println(skip);
                         computerSelect();
                         skip = 5;
                     }
-                else if(skip == 6)
+                else if(skip == 7)
                     {
-                        System.out.println(skip);
-                        if(winOrLose() <=2 && winOrLose() >= 0)
-                        {
-                            skip = 7;
+                        if(winOrLose() <=2 && winOrLose() >= 0) {
+                            skip = 8;
                         }
                     }
 
@@ -537,6 +543,4 @@ public class HauptSpiel {
         return 4;
 
     }
-
-
 }
