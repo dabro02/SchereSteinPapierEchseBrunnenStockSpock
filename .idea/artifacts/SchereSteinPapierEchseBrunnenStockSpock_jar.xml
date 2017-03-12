@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SchereSteinPapierEchseBrunnenStockSpock:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SchereSteinPapierEchseBrunnenStockSpock_jar</output-path>
+    <root id="archive" name="SchereSteinPapierEchseBrunnenStockSpock.jar">
+      <element id="module-output" name="SchereSteinPapierEchseBrunnenStockSpock" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/maingame" />
+    </root>
+  </artifact>
+</component>

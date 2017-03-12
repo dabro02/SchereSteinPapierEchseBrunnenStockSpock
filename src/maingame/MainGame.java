@@ -54,7 +54,11 @@ public class MainGame {
     //schließen des HauptSpiels
     public void closeHauptSpiel(){
         activescreen = 0;
+        frame.setResizable(true);
+        frame.setBounds(700, 200, 600, 600);
+        frame.setResizable(false);
         frame.repaint();
+
 
     }
 

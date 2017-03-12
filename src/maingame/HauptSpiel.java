@@ -34,6 +34,8 @@ public class HauptSpiel {
     BufferedImage spock;
     PictureButtons brunnenbutton;
     BufferedImage brunnen;
+    Button restart;
+    Button end;
 
 
 
@@ -53,18 +55,19 @@ public class HauptSpiel {
 
         //bilder laden
         try {
-            schere = ImageIO.read(MainGame.class.getResource("Pictures\\Schere.png"));
-            stein = ImageIO.read(MainGame.class.getResource("Pictures\\Stein.png"));
-            papier = ImageIO.read(MainGame.class.getResource("Pictures\\Papier.png"));
-            echse = ImageIO.read(MainGame.class.getResource("Pictures\\Echse.png"));
-            stock = ImageIO.read(MainGame.class.getResource("Pictures\\Stock.png"));
-            spock = ImageIO.read(MainGame.class.getResource("Pictures\\Spock.png"));
-            brunnen = ImageIO.read(MainGame.class.getResource("Pictures\\Brunnen.png"));
-            gewonnen = ImageIO.read(MainGame.class.getResource("Pictures\\Gewonnen.jpeg"));
-            gewonnentüte = ImageIO.read(MainGame.class.getResource("Pictures\\Gewonnentüte.jpeg"));
-            gewonnenglocke = ImageIO.read(MainGame.class.getResource("Pictures\\Gewonnenglocke.jpeg"));
-            verloren = ImageIO.read(MainGame.class.getResource("Pictures\\Verloren.jpeg"));
+            schere = ImageIO.read(this.getClass().getResource("Pictures/Schere.png"));
+            stein = ImageIO.read(this.getClass().getResource("Pictures/Stein.png"));
+            papier = ImageIO.read(this.getClass().getResource("Pictures/Papier.png"));
+            echse = ImageIO.read(this.getClass().getResource("Pictures/Echse.png"));
+            stock = ImageIO.read(this.getClass().getResource("Pictures/Stock.png"));
+            spock = ImageIO.read(this.getClass().getResource("Pictures/Spock.png"));
+            brunnen = ImageIO.read(this.getClass().getResource("Pictures/Brunnen.png"));
+            gewonnen = ImageIO.read(this.getClass().getResource("Pictures/Gewonnen.jpeg"));
+            gewonnentüte = ImageIO.read(this.getClass().getResource("Pictures/Gewonnentüte.jpeg"));
+            gewonnenglocke = ImageIO.read(this.getClass().getResource("Pictures/Gewonnenglocke.jpeg"));
+            verloren = ImageIO.read(this.getClass().getResource("Pictures/Verloren.jpeg"));
         } catch (Exception e) {
+            e.printStackTrace();
         }
         game.frame.addMouseListener(new MouseListener() {
             @Override
@@ -107,6 +110,15 @@ public class HauptSpiel {
                         else if (skip == 6) {
                             skip = 7;
                         }
+                        else if (skip == 8){
+                            if(restart.buttonPointed(e.getX(),e.getY())){
+                                skip =1;
+
+                            }
+                            else if(end.buttonPointed(e.getX(),e.getY())){
+                                game.closeHauptSpiel();
+                            }
+                        }
                 }
             }
 
@@ -130,6 +142,9 @@ public class HauptSpiel {
 
             }
         });
+
+        restart = new Button(650,700,150,50,Color.BLACK,Color.GREEN, "          Nochmal!");
+        end = new Button(1250, 700,150,50,Color.BLACK,Color.GREEN, "         Beenden");
     }
 
 
@@ -187,11 +202,13 @@ public class HauptSpiel {
             g.drawImage(actualImage, 600, 400, null);
             g.drawImage(computerImage, 1200, 400, null);
             g.setFont(new Font("Arial",Font.BOLD,25));
+            restart.render(g);
+           end.render(g);
             if(winOrLose() == 1)
             {
-                g.drawString("Yeah! Du hast gewonnen." , 810, 200);
-                g.drawImage(gewonnen, 500,200,null);
-                g.drawImage(gewonnen, 1100,200,null);
+                g.drawString("Yeah! Du hast gewonnen." , 840, 200);
+                g.drawImage(gewonnen, 530,200,null);
+                g.drawImage(gewonnen, 1130,200,null);
                 g.drawImage(gewonnentüte , 400,700,null);
                 g.drawImage(gewonnentüte, 1000,600,null);
                 g.drawImage(gewonnentüte, 200,300,null);
@@ -200,14 +217,15 @@ public class HauptSpiel {
             }
             else if(winOrLose() == 0)
             {
-                g.drawString("Schade! Du hast verloren." , 830, 200);
-                g.drawImage(verloren, 500,200,null);
+                g.drawString("Schade! Du hast verloren." , 840, 200);
+                g.drawImage(verloren, 530,200,null);
                 g.drawImage(verloren, 1200,200,null);
             }
             else if(winOrLose() == 2)
             {
                 g.drawString("Unentschieden! Versuche es nocheinmal." , 785, 200);
             }
+
         }
     }
 
@@ -257,6 +275,10 @@ public class HauptSpiel {
                             skip = 8;
                         }
                     }
+                    else if (skip == 8) {
+            restart.buttonPointed(x,y);
+            end.buttonPointed(x,y);
+            }
 
         } catch (Exception e) {
      }
@@ -283,6 +305,10 @@ public class HauptSpiel {
             koordinateY = (400-yPicture)*prozentsatz+yPicture;
 
             g.drawImage(image, (int) koordinateX, (int) koordinateY, null);
+            g.clearRect((int)koordinateX + 225, (int) koordinateY, 5,225);
+            g.clearRect((int)koordinateX , (int) koordinateY-5, 225,5);
+            g.clearRect((int)koordinateX , (int) koordinateY+ 225, 225,5);
+            g.clearRect((int)koordinateX-5 , (int) koordinateY, 5,225);
         }
         skip = 3;
         actualImage = image;
