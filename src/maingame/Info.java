@@ -19,7 +19,7 @@ public class Info {
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.BOLD,16));
         g.drawString("Dieses Spiel wurde von Daniel Brormann ", 150,100);
-        g.drawString("geschrieben und entwickelt.", 150,125);
+        g.drawString("und Johannes geschrieben und entwickelt.", 150,125);
         g.drawString("Bei Fragen und Vorschlägen für die ", 150, 150);
         g.drawString("Weiterentwicklung des Programms wenden", 150, 175);
         g.drawString("sie sich an ", 150 , 200);

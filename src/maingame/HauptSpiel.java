@@ -147,7 +147,7 @@ public class HauptSpiel {
         end = new Button(1250, 700,150,50,Color.BLACK,Color.GREEN, "         Beenden");
     }
 
-
+    int test = 4;
     //rendermethode vom maingame
     public void renderHauptSpiel(Graphics2D g) {
         //Screen 1
@@ -203,29 +203,31 @@ public class HauptSpiel {
             g.drawImage(computerImage, 1200, 400, null);
             g.setFont(new Font("Arial",Font.BOLD,25));
             restart.render(g);
-           end.render(g);
-            if(winOrLose() == 1)
+            end.render(g);
+            System.out.println(test);
+            if(test == 0)
             {
+                g.setFont(new Font("Arial",Font.BOLD,25));
                 g.drawString("Yeah! Du hast gewonnen." , 840, 200);
-                g.drawImage(gewonnen, 530,200,null);
-                g.drawImage(gewonnen, 1130,200,null);
+                g.drawImage(gewonnen, 850,300,null);
                 g.drawImage(gewonnentüte , 400,700,null);
-                g.drawImage(gewonnentüte, 1000,600,null);
+                g.drawImage(gewonnentüte, 1700,350,null);
                 g.drawImage(gewonnentüte, 200,300,null);
-                g.drawImage(gewonnenglocke, 1700,350,null);
+                g.drawImage(gewonnenglocke, 1000,600,null);
                 g.drawImage(gewonnenglocke, 1600,800,null);
             }
-            else if(winOrLose() == 0)
+            else if(test == 1)
             {
+                g.setFont(new Font("Arial",Font.BOLD,25));
                 g.drawString("Schade! Du hast verloren." , 840, 200);
-                g.drawImage(verloren, 530,200,null);
-                g.drawImage(verloren, 1200,200,null);
+                g.drawImage(verloren, 850,300,null);
             }
-            else if(winOrLose() == 2)
+            else if(test == 2)
             {
+                g.setFont(new Font("Arial",Font.BOLD,25));
                 g.drawString("Unentschieden! Versuche es nocheinmal." , 785, 200);
             }
-
+            else {}
         }
     }
 
@@ -271,7 +273,8 @@ public class HauptSpiel {
                     }
                 else if(skip == 7)
                     {
-                        if(winOrLose() <=2 && winOrLose() >= 0) {
+                        test = winOrLose();
+                        if(test <=2 && test >= 0) {
                             skip = 8;
                         }
                     }
@@ -353,30 +356,37 @@ public class HauptSpiel {
         {
             if(actualImage == schere)
             {
+                test = 2 ;
                 return 2;
             }
             else if (actualImage == stein)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == papier)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == echse)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == brunnen)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == stock)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == spock)
             {
+                test = 0;
                 return 0;
             }
         }
@@ -384,30 +394,37 @@ public class HauptSpiel {
         {
             if(actualImage == schere)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == stein)
             {
+                test = 2 ;
                 return 2;
             }
             else if (actualImage == papier)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == echse)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == brunnen)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == stock)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == spock)
             {
+                test = 0;
                 return 0;
             }
         }
@@ -415,30 +432,37 @@ public class HauptSpiel {
         {
             if(actualImage == schere)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == stein)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == papier)
             {
+                test = 2 ;
                 return 2;
             }
             else if (actualImage == echse)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == brunnen)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == stock)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == spock)
             {
+                test = 1;
                 return 1;
             }
         }
@@ -446,30 +470,37 @@ public class HauptSpiel {
         {
             if(actualImage == schere)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == stein)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == papier)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == echse)
             {
+                test = 2 ;
                 return 2;
             }
             else if (actualImage == brunnen)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == stock)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == spock)
             {
+                test = 1;
                 return 1;
             }
         }
@@ -477,30 +508,37 @@ public class HauptSpiel {
         {
             if(actualImage == schere)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == stein)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == papier)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == echse)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == brunnen)
             {
+                test = 2 ;
                 return 2;
             }
             else if (actualImage == stock)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == spock)
             {
+                test = 1;
                 return 1;
             }
         }
@@ -508,30 +546,37 @@ public class HauptSpiel {
         {
             if(actualImage == schere)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == stein)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == papier)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == echse)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == brunnen)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == stock)
             {
+                test = 2 ;
                 return 2;
             }
             else if (actualImage == spock)
             {
+                test = 0;
                 return 0;
             }
         }
@@ -539,30 +584,37 @@ public class HauptSpiel {
         {
             if(actualImage == schere)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == stein)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == papier)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == echse)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == brunnen)
             {
+                test = 0;
                 return 0;
             }
             else if (actualImage == stock)
             {
+                test = 1;
                 return 1;
             }
             else if (actualImage == spock)
             {
+                test = 2 ;
                 return 2;
             }
         }
