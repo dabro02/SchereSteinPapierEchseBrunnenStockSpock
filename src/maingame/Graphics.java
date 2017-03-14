@@ -17,12 +17,12 @@ import java.util.Random;
         BufferedImage img = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = img.createGraphics();
 
-        for(int i = 0; i<=100000; i++) {
+        for(int i = 0; i<=50000; i++) {
             g.fillRect(new Random().nextInt(4000), new Random().nextInt(3000), 2, 2);
         }
 
         try {
-            ImageIO.write(img, "png", new File("C:\\TestJavaGraphics\\bild.png"));
+            ImageIO.write(img, "png", new File("C:\\bild.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
