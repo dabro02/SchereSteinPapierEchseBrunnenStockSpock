@@ -20,7 +20,7 @@ public class MainFrame extends JPanel {
     MainFrame(MainGame game){
         this.game = game;
         game.frame.setBounds(700, 200, 600, 600);
-        game.frame.setResizable(false);
+        game.frame.setResizable(true);
         //getGraphics();
         game.frame.addMouseListener(new MouseListener() {
             @Override
